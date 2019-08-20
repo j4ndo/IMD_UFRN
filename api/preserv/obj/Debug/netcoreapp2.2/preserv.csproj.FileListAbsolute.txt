@@ -1,0 +1,14 @@
+C:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\bin\Debug\netcoreapp2.2\preserv.deps.json
+C:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\bin\Debug\netcoreapp2.2\preserv.runtimeconfig.json
+C:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\bin\Debug\netcoreapp2.2\preserv.runtimeconfig.dev.json
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\bin\Debug\netcoreapp2.2\preserv.dll
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\bin\Debug\netcoreapp2.2\preserv.pdb
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.csprojAssemblyReference.cache
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.csproj.CoreCompileInputs.cache
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorAssemblyInfo.cache
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorAssemblyInfo.cs
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.AssemblyInfoInputs.cache
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.AssemblyInfo.cs
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorTargetAssemblyInfo.cache
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.dll
+c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.pdb
