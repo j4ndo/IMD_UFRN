@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Categoria.Models;
+using PreservWebApi.Models;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 namespace preserv
@@ -27,7 +27,7 @@ namespace preserv
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CategoriaContext>(opt => opt.UseInMemoryDatabase("CategoraList"));
+            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("CategoraList"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
