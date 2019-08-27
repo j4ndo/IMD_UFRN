@@ -6,7 +6,12 @@ namespace PreservWebApi.Models
     {
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-
+        public DbSet<UnidadeTempo> UnidadesTempo { get; set; }
+        public DbSet<Projeto> Projetos { get; set; }
+        public DbSet<Contrato> Contratos { get; set; }
+        public DbSet<Tarefa> Tarefas { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)

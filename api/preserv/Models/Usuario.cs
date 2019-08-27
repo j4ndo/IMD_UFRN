@@ -13,6 +13,4 @@ namespace PreservWebApi.Models
         public int IdPerfil {get; set;}
         public Perfil Perfil { get; set; }
     }
-
-    
 }

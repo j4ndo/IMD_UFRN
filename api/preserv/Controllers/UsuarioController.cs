@@ -8,26 +8,26 @@ using Microsoft.EntityFrameworkCore;
 namespace PreservWebApi.Controllers
 {
     [Route("/api/[controller]")]
-    public class PerfilController : ControllerBase
+    public class UsuarioController : ControllerBase
     {
         private readonly AppDbContext _context;
         
-        public PerfilController(AppDbContext context)
+        public UsuarioController(AppDbContext context)
         {
             _context = context;   
         }
          // GET api/values
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Perfil>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Usuario>>> GetAll()
         {
-            return await _context.Perfis.ToListAsync();
+            return await _context.Usuarios.ToListAsync();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Perfil>> GetById(int id)
+        public async Task<ActionResult<Usuario>> GetById(int id)
         {
-            var Item = await _context.Perfis.FindAsync(id);
+            var Item = await _context.Usuarios.FindAsync(id);
             if (Item == null)
             {
                return NotFound(); 
@@ -37,19 +37,19 @@ namespace PreservWebApi.Controllers
 
         // POST api/values
         [HttpPost]
-        public async Task<ActionResult<Perfil>> Post(Perfil Item)
+        public async Task<ActionResult<Usuario>> Post(Usuario Item)
         {
-            _context.Perfis.Add(Item);
+            _context.Usuarios.Add(Item);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetById), new {id = Item.IdPerfil}, Item);
+            return CreatedAtAction(nameof(GetById), new {id = Item.IdUsuario}, Item);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Perfil Item)
+        public async Task<IActionResult> Put(int id, Usuario Item)
         {
-            if (id != Item.IdPerfil)
+            if (id != Item.IdUsuario)
             {
                 return BadRequest();
             }
@@ -63,7 +63,7 @@ namespace PreservWebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var Item = await _context.Perfis.FindAsync(id);
+            var Item = await _context.Usuarios.FindAsync(id);
 
             if (Item == null)
             {

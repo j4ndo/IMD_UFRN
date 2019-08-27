@@ -8,26 +8,26 @@ using Microsoft.EntityFrameworkCore;
 namespace PreservWebApi.Controllers
 {
     [Route("/api/[controller]")]
-    public class PerfilController : ControllerBase
+    public class ContratoController : ControllerBase
     {
         private readonly AppDbContext _context;
         
-        public PerfilController(AppDbContext context)
+        public ContratoController(AppDbContext context)
         {
             _context = context;   
         }
          // GET api/values
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Perfil>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Contrato>>> GetAll()
         {
-            return await _context.Perfis.ToListAsync();
+            return await _context.Contratos.ToListAsync();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Perfil>> GetById(int id)
+        public async Task<ActionResult<Contrato>> GetById(int id)
         {
-            var Item = await _context.Perfis.FindAsync(id);
+            var Item = await _context.Contratos.FindAsync(id);
             if (Item == null)
             {
                return NotFound(); 
@@ -37,19 +37,19 @@ namespace PreservWebApi.Controllers
 
         // POST api/values
         [HttpPost]
-        public async Task<ActionResult<Perfil>> Post(Perfil Item)
+        public async Task<ActionResult<Contrato>> Post(Contrato Item)
         {
-            _context.Perfis.Add(Item);
+            _context.Contratos.Add(Item);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetById), new {id = Item.IdPerfil}, Item);
+            return CreatedAtAction(nameof(GetById), new {id = Item.IdContrato}, Item);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Perfil Item)
+        public async Task<IActionResult> Put(int id, Contrato Item)
         {
-            if (id != Item.IdPerfil)
+            if (id != Item.IdContrato)
             {
                 return BadRequest();
             }
@@ -63,7 +63,7 @@ namespace PreservWebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var Item = await _context.Perfis.FindAsync(id);
+            var Item = await _context.Contratos.FindAsync(id);
 
             if (Item == null)
             {
