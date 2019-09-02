@@ -12,10 +12,10 @@ namespace PreservWebApi.Models
         public int PrazoPrevisto {get; set;} 
         
         public int IdUnidadeTempo {get; set;}
-        public UnidadeTempo UnidadeTempo { get; set; }
+        public virtual UnidadeTempo UnidadeTempo { get; set; }
         
         public int IdProjeto {get; set;}
-        public Projeto Projeto { get; set; }
+        public virtual Projeto Projeto { get; set; }
         
     }
 }

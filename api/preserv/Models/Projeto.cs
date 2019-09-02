@@ -13,9 +13,11 @@ namespace PreservWebApi.Models
         public DateTime DataCriacao {get; set;}
         
         public int IdUnidadeTempo {get; set;}
-        public UnidadeTempo UnidadeTempo { get; set; }
+        public virtual UnidadeTempo UnidadeTempo { get; set; }
         public int IdCategoria {get; set;}
-        public Categoria Categoria { get; set; }
-        public IList<Contrato> Contratos { get; set; } = new List<Contrato>();
+        public virtual Categoria Categoria { get; set; }
+
+        public virtual IList<Contrato> Contratos { get; set; } = new List<Contrato>();
+        public virtual IList<Tarefa> Tarefas { get; set; } = new List<Tarefa>();
     }
 }

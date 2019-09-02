@@ -14,6 +14,8 @@ using PreservWebApi.Models;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
+using Pomelo.EntityFrameworkCore.MySql;
+
 namespace preserv
 {
     public class Startup
@@ -28,12 +30,18 @@ namespace preserv
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("Preserv"));
+            //services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("Preserv"));
+            services.AddEntityFrameworkMySql()
+            .AddDbContext<AppDbContext>(
+                opt => opt.UseMySql(
+                    Configuration.GetConnectionString("BaseDB")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { 
+                    Title = "PRESERV API", 
+                    Version = "v1" });
             });
 
         }
@@ -57,9 +65,17 @@ namespace preserv
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PRESERV API");
+                c.RoutePrefix = string.Empty;
             });
 
+            /* HABILITANDO CORS */
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+            
             //app.UseHttpsRedirection();
             app.UseMvc();
         }

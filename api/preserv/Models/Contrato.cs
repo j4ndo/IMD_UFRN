@@ -11,13 +11,13 @@ namespace PreservWebApi.Models
         public DateTime DataEncerramento {get; set;}
         
         public int IdProjeto {get; set;}
-        public Projeto Projeto { get; set; }
+        public virtual Projeto Projeto { get; set; }
 
         public int IdContratante {get; set;}
-        public Usuario Contratante { get; set; }
+        public virtual Usuario Contratante { get; set; }
 
         public int IdContratado {get; set;}
-        public Usuario Contratado { get; set; }
+        public virtual Usuario Contratado { get; set; }
 
     }
 }

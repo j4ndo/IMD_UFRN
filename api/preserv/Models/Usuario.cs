@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace PreservWebApi.Models
 {  
@@ -11,6 +12,10 @@ namespace PreservWebApi.Models
         public DateTime DataCriacao {get; set;}
         
         public int IdPerfil {get; set;}
-        public Perfil Perfil { get; set; }
+        public virtual Perfil Perfil { get; set; }
+
+        public virtual IList<Log> Logs { get; set; } = new List<Log>();
+
+        public virtual IList<Contrato> Contratos { get; set; } = new List<Contrato>();        
     }
 }

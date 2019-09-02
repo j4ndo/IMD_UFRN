@@ -59,42 +59,49 @@ namespace PreservWebApi.Models
             builder.Entity<Log>().HasKey(r => r.IdLog);
             builder.Entity<Log>().Property(r => r.IdLog).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Log>().Property(r => r.IdUsuario).IsRequired();
-            builder.Entity<Log>().Property(r => r.Usuario).IsRequired().HasMaxLength(16);
             builder.Entity<Log>().Property(r => r.Acao).IsRequired().HasMaxLength(255);
             builder.Entity<Log>().Property(r => r.Pagina).IsRequired().HasMaxLength(255);
             builder.Entity<Log>().Property(r => r.DataCriacao);
             builder.Entity<Log>().HasOne(x => x.Usuario).WithMany(x => x.Logs).HasForeignKey(x => x.IdUsuario);
             
-            builder.Entity<Log>().ToTable("Projeto");
+            builder.Entity<Projeto>().ToTable("Projeto");
             builder.Entity<Projeto>().HasKey(r => r.IdProjeto);
             builder.Entity<Projeto>().Property(r => r.IdProjeto).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Projeto>().Property(r => r.IdUnidadeTempo).IsRequired();
+            builder.Entity<Projeto>().Property(r => r.IdCategoria).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Projeto>().Property(r => r.Descricao).IsRequired().HasMaxLength(255);
             builder.Entity<Projeto>().Property(r => r.PrazoPrevistoMinimo);
             builder.Entity<Projeto>().Property(r => r.PrazoPrevistoMaximo);
             builder.Entity<Projeto>().Property(r => r.ValorPrevisto);
             builder.Entity<Projeto>().Property(r => r.DataCriacao);
-            builder.Entity<Projeto>().HasOne(x => x.Usuario).WithMany(x => x.Logs).HasForeignKey(x => x.IdUsuario);
+            builder.Entity<Projeto>().HasOne(x => x.UnidadeTempo).WithMany(x => x.Projetos).HasForeignKey(x => x.IdUnidadeTempo);
+            builder.Entity<Projeto>().HasOne(x => x.Categoria).WithMany(x => x.Projetos).HasForeignKey(x => x.IdCategoria);
             
-            builder.Entity<Log>().ToTable("Log");
-            builder.Entity<Log>().HasKey(r => r.IdLog);
-            builder.Entity<Log>().Property(r => r.IdLog).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Log>().Property(r => r.IdUsuario).IsRequired();
-            builder.Entity<Log>().Property(r => r.Usuario).IsRequired().HasMaxLength(16);
-            builder.Entity<Log>().Property(r => r.Acao).IsRequired().HasMaxLength(255);
-            builder.Entity<Log>().Property(r => r.Pagina).IsRequired().HasMaxLength(255);
-            builder.Entity<Log>().Property(r => r.DataCriacao);
-            builder.Entity<Log>().HasOne(x => x.Usuario).WithMany(x => x.Logs).HasForeignKey(x => x.IdUsuario);
+            builder.Entity<Tarefa>().ToTable("Tarefa");
+            builder.Entity<Tarefa>().HasKey(r => r.IdTarefa);
+            builder.Entity<Tarefa>().Property(r => r.IdTarefa).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Tarefa>().Property(r => r.IdProjeto);
+            builder.Entity<Tarefa>().Property(r => r.IdUnidadeTempo).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Tarefa>().Property(r => r.Descricao).IsRequired().HasMaxLength(255);
+            builder.Entity<Tarefa>().Property(r => r.DataInicio);
+            builder.Entity<Tarefa>().Property(r => r.DataEncerramento);
+            builder.Entity<Tarefa>().Property(r => r.DataCriacao);
+            builder.Entity<Tarefa>().HasOne(x => x.UnidadeTempo).WithMany(x => x.Tarefas).HasForeignKey(x => x.IdUnidadeTempo);
+            builder.Entity<Tarefa>().HasOne(x => x.Projeto).WithMany(x => x.Tarefas).HasForeignKey(x => x.IdProjeto);
             
-            builder.Entity<Log>().ToTable("Log");
-            builder.Entity<Log>().HasKey(r => r.IdLog);
-            builder.Entity<Log>().Property(r => r.IdLog).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Log>().Property(r => r.IdUsuario).IsRequired();
-            builder.Entity<Log>().Property(r => r.Usuario).IsRequired().HasMaxLength(16);
-            builder.Entity<Log>().Property(r => r.Acao).IsRequired().HasMaxLength(255);
-            builder.Entity<Log>().Property(r => r.Pagina).IsRequired().HasMaxLength(255);
-            builder.Entity<Log>().Property(r => r.DataCriacao);
-            builder.Entity<Log>().HasOne(x => x.Usuario).WithMany(x => x.Logs).HasForeignKey(x => x.IdUsuario);
-            
+            builder.Entity<Contrato>().ToTable("Contrato");
+            builder.Entity<Contrato>().HasKey(r => r.IdContrato);
+            builder.Entity<Contrato>().Property(r => r.IdContrato).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Contrato>().Property(r => r.IdProjeto);
+            builder.Entity<Contrato>().Property(r => r.IdContratante).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Contrato>().Property(r => r.IdContratado).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Contrato>().Property(r => r.Descricao).IsRequired().HasMaxLength(255);
+            builder.Entity<Contrato>().Property(r => r.ValorContratado).IsRequired().HasMaxLength(16);
+            builder.Entity<Contrato>().Property(r => r.DataCriacao);
+            builder.Entity<Contrato>().Property(r => r.DataEncerramento);
+            builder.Entity<Contrato>().HasOne(x => x.Projeto).WithMany(x => x.Contratos).HasForeignKey(x => x.IdProjeto);
+            builder.Entity<Contrato>().HasOne(x => x.Contratante).WithMany(x => x.Contratos).HasForeignKey(x => x.IdContratante);
+            builder.Entity<Contrato>().HasOne(x => x.Contratado).WithMany(x => x.Contratos).HasForeignKey(x => x.IdContratado);            
         }
     }
 }

@@ -8,6 +8,6 @@ namespace PreservWebApi.Models
         public int IdPerfil {get; set;}
         public string Descricao {get; set;}
         public DateTime DataCriacao {get; set;}
-        public IList<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        public virtual IList<Usuario> Usuarios { get; set; } = new List<Usuario>();
     }
 }

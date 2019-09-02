@@ -12,3 +12,17 @@ c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2
 c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorTargetAssemblyInfo.cache
 c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.dll
 c:\Users\jande\OneDrive\Documentos\dev\preserv\api\preserv\obj\Debug\netcoreapp2.2\preserv.pdb
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.csprojAssemblyReference.cache
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.csproj.CoreCompileInputs.cache
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorAssemblyInfo.cache
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorAssemblyInfo.cs
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.AssemblyInfoInputs.cache
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.AssemblyInfo.cs
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.dll
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.pdb
+C:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.deps.json
+C:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.runtimeconfig.json
+C:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.runtimeconfig.dev.json
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.dll
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.pdb
+c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorTargetAssemblyInfo.cache
