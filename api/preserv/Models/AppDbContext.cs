@@ -26,12 +26,6 @@ namespace PreservWebApi.Models
             builder.Entity<Perfil>().Property(r => r.DataCriacao);
             builder.Entity<Perfil>().HasMany(r => r.Usuarios).WithOne(r => r.Perfil).HasForeignKey(r => r.IdPerfil);
 
-            builder.Entity<Perfil>().HasData
-            (
-                new Perfil { IdPerfil = 100, Descricao = "Contratante" }, // Id set manually due to in-memory provider
-                new Perfil { IdPerfil = 101, Descricao = "Contratado" }
-            );
-
             builder.Entity<Usuario>().ToTable("Usuario");
             builder.Entity<Usuario>().HasKey(r => r.IdUsuario);
             builder.Entity<Usuario>().Property(r => r.IdUsuario).IsRequired().ValueGeneratedOnAdd();
@@ -68,7 +62,7 @@ namespace PreservWebApi.Models
             builder.Entity<Projeto>().HasKey(r => r.IdProjeto);
             builder.Entity<Projeto>().Property(r => r.IdProjeto).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Projeto>().Property(r => r.IdUnidadeTempo).IsRequired();
-            builder.Entity<Projeto>().Property(r => r.IdCategoria).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Projeto>().Property(r => r.IdCategoria).IsRequired();
             builder.Entity<Projeto>().Property(r => r.Descricao).IsRequired().HasMaxLength(255);
             builder.Entity<Projeto>().Property(r => r.PrazoPrevistoMinimo);
             builder.Entity<Projeto>().Property(r => r.PrazoPrevistoMaximo);
@@ -81,7 +75,7 @@ namespace PreservWebApi.Models
             builder.Entity<Tarefa>().HasKey(r => r.IdTarefa);
             builder.Entity<Tarefa>().Property(r => r.IdTarefa).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Tarefa>().Property(r => r.IdProjeto);
-            builder.Entity<Tarefa>().Property(r => r.IdUnidadeTempo).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Tarefa>().Property(r => r.IdUnidadeTempo).IsRequired();
             builder.Entity<Tarefa>().Property(r => r.Descricao).IsRequired().HasMaxLength(255);
             builder.Entity<Tarefa>().Property(r => r.DataInicio);
             builder.Entity<Tarefa>().Property(r => r.DataEncerramento);
@@ -93,8 +87,8 @@ namespace PreservWebApi.Models
             builder.Entity<Contrato>().HasKey(r => r.IdContrato);
             builder.Entity<Contrato>().Property(r => r.IdContrato).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Contrato>().Property(r => r.IdProjeto);
-            builder.Entity<Contrato>().Property(r => r.IdContratante).IsRequired().ValueGeneratedOnAdd();
-            builder.Entity<Contrato>().Property(r => r.IdContratado).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Contrato>().Property(r => r.IdContratante).IsRequired();
+            builder.Entity<Contrato>().Property(r => r.IdContratado).IsRequired();
             builder.Entity<Contrato>().Property(r => r.Descricao).IsRequired().HasMaxLength(255);
             builder.Entity<Contrato>().Property(r => r.ValorContratado).IsRequired().HasMaxLength(16);
             builder.Entity<Contrato>().Property(r => r.DataCriacao);

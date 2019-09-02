@@ -14,8 +14,6 @@ namespace PreservWebApi.Models
         public int IdPerfil {get; set;}
         public virtual Perfil Perfil { get; set; }
 
-        public virtual IList<Log> Logs { get; set; } = new List<Log>();
-
-        public virtual IList<Contrato> Contratos { get; set; } = new List<Contrato>();        
+        public virtual IList<Log> Logs { get; set; } = new List<Log>();                
     }
 }

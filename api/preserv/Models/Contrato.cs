@@ -14,10 +14,13 @@ namespace PreservWebApi.Models
         public virtual Projeto Projeto { get; set; }
 
         public int IdContratante {get; set;}
-        public virtual Usuario Contratante { get; set; }
+        public virtual Contratante Contratante { get; set; }
 
         public int IdContratado {get; set;}
-        public virtual Usuario Contratado { get; set; }
+        public virtual Contratado Contratado { get; set; }
+
+        //public virtual ICollection<Usuario> Contratante { get; set; }
+        //public virtual ICollection<Usuario> Contratado { get; set; }
 
     }
 }
