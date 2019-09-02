@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using PreservWebApi.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PreservWebApi.Controllers
 {
+    [Authorize("Bearer")]
     [Route("/api/[controller]")]
     public class ContratoController : ControllerBase
     {

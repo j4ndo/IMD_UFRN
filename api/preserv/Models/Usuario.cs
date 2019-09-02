@@ -9,6 +9,8 @@ namespace PreservWebApi.Models
         public string Login {get; set;}
         public string Senha {get; set;}
         public string Email {get; set;}
+
+        public string ChaveAcesso {get; set;}
         public DateTime DataCriacao {get; set;}
         
         public int IdPerfil {get; set;}

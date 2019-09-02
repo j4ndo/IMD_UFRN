@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
 using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace preserv
 {
@@ -30,12 +31,15 @@ namespace preserv
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("Preserv"));
+            services.AddCors();
+
             services.AddEntityFrameworkMySql()
             .AddDbContext<AppDbContext>(
                 opt => opt.UseMySql(
                     Configuration.GetConnectionString("BaseDB")));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
@@ -44,6 +48,38 @@ namespace preserv
                     Version = "v1" });
             });
 
+            var SigningConfig = new SigningConfigurations();
+            services.AddSingleton (SigningConfig);                  
+
+            var tokenConfigurations = new TokenConfiguration ();
+            new ConfigureFromConfigurationOptions<TokenConfiguration> (
+                Configuration.GetSection("TokenConfigurations")
+            ).Configure (tokenConfigurations);
+
+            services.AddSingleton(tokenConfigurations);
+
+            services.AddAuthentication (authOptions => {
+                authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer (bearerOptions => {
+                var paramsValidation = bearerOptions.TokenValidationParameters;
+                paramsValidation.IssuerSigningKey = SigningConfig.Key;
+                paramsValidation.ValidAudience = tokenConfigurations.Audience;
+                paramsValidation.ValidIssuer = tokenConfigurations.Issuer;
+                paramsValidation.ValidateIssuerSigningKey = true;
+                paramsValidation.ValidateLifetime = true;
+                paramsValidation.ClockSkew = TimeSpan.Zero;
+            });
+            services.AddAuthorization (auth => {
+                auth.AddPolicy (
+                    "Bearer", new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder ()
+                    .AddAuthenticationSchemes (JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser ().Build ()
+                );
+            });
+            services.AddAuthorization (options => {
+                options.AddPolicy ("ApenasAdministrador", policy => policy.RequireRole ("Administrador"));                
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,11 +106,12 @@ namespace preserv
             });
 
             /* HABILITANDO CORS */
-            app.UseCors(builder => builder
+            /*app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .AllowCredentials());
+                .AllowCredentials()); */
+            app.UseCors(option => option.WithOrigins ("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
             
             //app.UseHttpsRedirection();
             app.UseMvc();
