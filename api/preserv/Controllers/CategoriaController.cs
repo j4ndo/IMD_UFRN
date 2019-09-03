@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace PreservWebApi.Controllers
 {
-    [Authorize("Bearer")]
+    //[Authorize("Bearer")]
     [Route("/api/[controller]")]
     [ApiController]
     public class CategoriaController : ControllerBase

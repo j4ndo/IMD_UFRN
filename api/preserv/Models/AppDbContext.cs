@@ -32,6 +32,7 @@ namespace PreservWebApi.Models
             builder.Entity<Usuario>().Property(r => r.Login).IsRequired().HasMaxLength(16);
             builder.Entity<Usuario>().Property(r => r.Senha).IsRequired().HasMaxLength(32);
             builder.Entity<Usuario>().Property(r => r.Email).IsRequired().HasMaxLength(255);
+            builder.Entity<Usuario>().Property(r => r.ChaveAcesso).HasMaxLength(32);
             builder.Entity<Usuario>().Property(r => r.IdPerfil);
             builder.Entity<Usuario>().Property(r => r.DataCriacao);
             builder.Entity<Usuario>().HasOne(x => x.Perfil).WithMany(x => x.Usuarios).HasForeignKey(x => x.IdPerfil);

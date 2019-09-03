@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PreservWebApi.Models;
 using Microsoft.OpenApi.Models;
+using PreservWebApi.Services;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
 using Pomelo.EntityFrameworkCore.MySql;
@@ -48,6 +49,7 @@ namespace preserv
                     Version = "v1" });
             });
 
+            services.AddScoped<UsuarioService>();
             var SigningConfig = new SigningConfigurations();
             services.AddSingleton (SigningConfig);                  
 
@@ -76,10 +78,7 @@ namespace preserv
                     .AddAuthenticationSchemes (JwtBearerDefaults.AuthenticationScheme)
                     .RequireAuthenticatedUser ().Build ()
                 );
-            });
-            services.AddAuthorization (options => {
-                options.AddPolicy ("ApenasAdministrador", policy => policy.RequireRole ("Administrador"));                
-            });
+            });            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

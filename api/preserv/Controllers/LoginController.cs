@@ -6,18 +6,14 @@ using System.Security.Claims;
 using System.Security.Principal;
 using Microsoft.IdentityModel.Tokens;
 using PreservWebApi.Models;
+using PreservWebApi.Services;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Web.Http;
 
 namespace PreservWebApi.Controllers
 {
     [Route("/api/[controller]")]
-    public class LoginController : ControllerBase
+    public class LoginController : Controller
     {
-        //private DBViagemContext _context;
         private readonly AppDbContext _context;
         public LoginController(AppDbContext _context)
         {
@@ -27,8 +23,9 @@ namespace PreservWebApi.Controllers
         [HttpPost]
         public object Post(
         [FromBody]Usuario usuario,
-        [FromBody]SigningConfigurations signingConfigurations,
-        [FromBody]TokenConfiguration tokenConfigurations)
+        [FromServices]UsuarioService usuarioService,
+        [FromServices]SigningConfigurations signingConfigurations,
+        [FromServices]TokenConfiguration tokenConfigurations)
         {
             bool credenciaisValidas = false;
             if (usuario != null && !String.IsNullOrWhiteSpace(usuario.Email))
@@ -64,19 +61,15 @@ namespace PreservWebApi.Controllers
                     created = dataCriacao.ToString("yyyy-MM-dd HH:mm:ss"),
                     expiration = dataExpiracao.ToString("yyyy-MM-dd HH:mm:ss"),
                     accessToken = token,
-                    message = "Seja Bem-vindo!"
+                    message = "OK!"
                 };
             }
             else
             {
-                //return Unauthorized(new UnAuthorizedError("Usuario e/ou senha inválidos!"));
                 return new
                 {
-                    authenticated = false,
-                    created = "",
-                    expiration = "",
-                    accessToken = "",
-                    message = "Usuario e/ou senha inválidos!"
+                    authenticated = false,                    
+                    message = "Falha ao autenticar!"
                 };
             }
         }
