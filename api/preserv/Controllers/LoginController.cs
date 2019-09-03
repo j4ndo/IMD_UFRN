@@ -8,10 +8,12 @@ using Microsoft.IdentityModel.Tokens;
 using PreservWebApi.Models;
 using PreservWebApi.Services;
 using System.Linq;
+using Microsoft.AspNetCore.Cors;
 
 namespace PreservWebApi.Controllers
 {
     [Route("/api/[controller]")]
+    [DisableCors]
     public class LoginController : Controller
     {
         private readonly AppDbContext _context;

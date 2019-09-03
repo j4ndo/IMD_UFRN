@@ -1,0 +1,44 @@
+<app-page-header [heading]="'Categorias'" [icon]="'fa-bar-chart-o'"></app-page-header>
+<div class="col-sm">
+    <div class="card">
+        <div class="card-body">
+            <ngb-tabset [justify]="currentJustify">
+                <ngb-tab title="Minhas Categorias">
+                    <ng-template ngbTabContent>
+                        <div class="card-body table-responsive">
+                            <table datatable [dtOptions]="dtOptions" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Descrição</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let res of categorias; index as i">
+                                        <td class="text-center">
+                                            <small>{{i+1}}</small>
+                                        </td>
+                                        <td class="text-left">
+                                            <small>{{res.descricao}}</small>
+                                        </td>
+
+                                        <th>
+                                            #
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                    <ng-template ngbTabTitle>Novo</ng-template>
+                    <ng-template ngbTabContent>
+                        <app-categoriaForm></app-categoriaForm>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+</div>

@@ -58,7 +58,7 @@
         </div> -->
         <a [routerLink]="['/usuario']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-user-o"></i>&nbsp;
-            <span>{{ 'Usuario' | translate }}</span>
+            <span>{{ 'Usuarios' | translate }}</span>
         </a>
         <a [routerLink]="['/projeto']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-tags"></i>&nbsp;
@@ -68,10 +68,19 @@
             <i class="fa fa-newspaper-o"></i>&nbsp;
             <span>{{ 'Contratos' | translate }}</span>
         </a>
+        <a [routerLink]="['/categoria']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-list-ol"></i>&nbsp;
+            <span>{{ 'Categoria' | translate }}</span>
+        </a>
+        <a [routerLink]="['/unidadeTempo']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-list-ol"></i>&nbsp;
+            <span>{{ 'Unidade de Tempo' | translate }}</span>
+        </a>
         <a [routerLink]="['/log']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-list-ol"></i>&nbsp;
-            <span>{{ 'log' | translate }}</span>
+            <span>{{ 'Log' | translate }}</span>
         </a>
+
 
         <!-- <div class="header-fields">
             <a (click)="rltAndLtr()" class="list-group-item">

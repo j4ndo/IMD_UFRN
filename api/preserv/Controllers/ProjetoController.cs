@@ -4,10 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using PreservWebApi.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 namespace PreservWebApi.Controllers
 {
     [Route("/api/[controller]")]
+    [DisableCors]
     public class ProjetoController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -36,7 +38,7 @@ namespace PreservWebApi.Controllers
         }
 
         // POST api/values
-        [HttpPost]
+        [HttpPost]        
         public async Task<ActionResult<Projeto>> Post(Projeto Item)
         {
             _context.Projetos.Add(Item);

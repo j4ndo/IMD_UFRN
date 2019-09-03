@@ -1,106 +1,48 @@
-<app-page-header [heading]="'Usuario'" [icon]="'fa-bar-chart-o'"></app-page-header>
+<app-page-header [heading]="'Usuarios'" [icon]="'fa-bar-chart-o'"></app-page-header>
 <div class="col-sm">
     <div class="card">
         <div class="card-body">
             <ngb-tabset [justify]="currentJustify">
-                <ngb-tab title="Editar perfil">
+                <ngb-tab title="Usuários Cadastrados">
                     <ng-template ngbTabContent>
-                        <div class="row">
-                            <div class="col-lg">
-                                <form [formGroup]="usuarioForm" role="form">
-                                    <div class="row">
-                                        <div class=" col-md-6">
-                                            <label>Nome Completo</label>
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Digite seu nome completo"
-                                                formControlName="nome"
-                                                [(ngModel)]="usuarioForm.nome"
-                                                required
-                                            />
-                                        </div>
-                                        <div class=" col-md-6">
-                                            <label>Email</label>
-                                            <input
-                                                type="email"
-                                                class="form-control"
-                                                placeholder="Digite seu email"
-                                                formControlName="email"
-                                                [(ngModel)]="usuarioForm.email"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>login</label>
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Digite seu um login"
-                                                formControlName="login"
-                                                [(ngModel)]="usuarioForm.login"
-                                                required
-                                            />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Senha</label>
-                                            <input
-                                                type="password"
-                                                class="form-control"
-                                                placeholder="Digite sua nova senha"
-                                                formControlName="senha"
-                                                required
-                                            />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Confirme a senha</label>
-                                            <input
-                                                type="password"
-                                                class="form-control"
-                                                placeholder="confirme sua senha"
-                                                formControlName="senhaConf"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    <button
-                                        type="button"
-                                        class="btn btn-success"
-                                        [disabled]="!formValido()"
-                                        (click)="salvar()"
-                                        style="margin-top: 2%"
-                                    >
-                                        Salvar
-                                    </button>
-                                </form>
-                            </div>
+                        <div class="card-body table-responsive">
+                            <table datatable [dtOptions]="dtOptions" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Login</th>
+                                        <th>Email</th>
+                                        <th>Perfil</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>                                    
+                                    <tr *ngFor="let res of usuarios; index as i">
+                                        <td class="text-center">
+                                            <small>{{i+1}}</small>
+                                        </td>
+                                        <td class="text-left">
+                                            <small>{{res.login}}</small>
+                                        </td>
+                                        <td class="text-left">
+                                                <small>{{res.email}}</small>
+                                        </td>
+                                        <td class="text-left">
+                                                <small>{{res.perfil.descricao}}</small>
+                                            </td>
+                                        <th>
+                                            #
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </ng-template>
                 </ngb-tab>
                 <ngb-tab>
-                    <ng-template  ngbTabTitle>
-                        <a href="#" (click)="getContratos()" >Meus contratos</a>
-                    </ng-template>
+                    <ng-template ngbTabTitle>Novo</ng-template>
                     <ng-template ngbTabContent>
-                        <div class="page-header">
-                            <h1>Cards</h1>
-                            <hr />
-                        </div>
-                        <!-- <div class="row"*ngFor="let item of contratos "></div>
-                            <div class="col-sm-4">
-                                <div class="card text-white bg-primary mb-3">
-                                    <div class="card-header">{item.id}}</div>
-                                    <div class="card-body">
-                                        <h4 class="card-title">{item.tipo}}</h4>
-                                        <p class="card-text">
-                                            {item.descricao}}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                        <app-usuarioForm></app-usuarioForm>
                     </ng-template>
                 </ngb-tab>
             </ngb-tabset>

@@ -1,7 +1,8 @@
 
 export const environment = {
   production: false,
-  apiSistema: 'https://localhost:5001/api/'
+  apiSistema: 'https://localhost:5001/api/',
+  idUsuarioLogado: 0,
 };
 
 

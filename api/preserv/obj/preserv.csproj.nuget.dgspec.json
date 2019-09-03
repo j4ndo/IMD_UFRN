@@ -1,33 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\70098534440\\dev\\preserv\\IMD_UFRN\\api\\preserv\\preserv.csproj": {}
+    "C:\\Users\\jande\\OneDrive\\Documentos\\dev\\preserv\\api\\preserv\\preserv.csproj": {}
   },
   "projects": {
-    "C:\\Users\\70098534440\\dev\\preserv\\IMD_UFRN\\api\\preserv\\preserv.csproj": {
+    "C:\\Users\\jande\\OneDrive\\Documentos\\dev\\preserv\\api\\preserv\\preserv.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\70098534440\\dev\\preserv\\IMD_UFRN\\api\\preserv\\preserv.csproj",
+        "projectUniqueName": "C:\\Users\\jande\\OneDrive\\Documentos\\dev\\preserv\\api\\preserv\\preserv.csproj",
         "projectName": "preserv",
-        "projectPath": "C:\\Users\\70098534440\\dev\\preserv\\IMD_UFRN\\api\\preserv\\preserv.csproj",
-        "packagesPath": "C:\\Users\\70098534440\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\70098534440\\dev\\preserv\\IMD_UFRN\\api\\preserv\\obj\\",
+        "projectPath": "C:\\Users\\jande\\OneDrive\\Documentos\\dev\\preserv\\api\\preserv\\preserv.csproj",
+        "packagesPath": "C:\\Users\\jande\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jande\\OneDrive\\Documentos\\dev\\preserv\\api\\preserv\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\70098534440\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\jande\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://tcenugetdev.tce.govrn/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

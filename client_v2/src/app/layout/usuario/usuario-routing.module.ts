@@ -1,11 +1,21 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsuarioComponent } from './usuario.component';
+import { UsuarioFormComponent } from './usuarioForm/usuarioForm.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: UsuarioComponent
+        component: UsuarioComponent,
+        children: [
+            {
+                path: 'novo',
+                component: UsuarioFormComponent,
+                data: {
+                    title: 'Cadastrar'
+                  }
+            }
+        ]
     }
 ];
 

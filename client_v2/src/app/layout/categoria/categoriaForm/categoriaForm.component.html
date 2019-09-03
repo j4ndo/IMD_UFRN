@@ -1,0 +1,24 @@
+<div class="col-sm">
+  <div class="card">
+    <div class="card-body">      
+      <div class="row">
+        <div class="col-lg">          
+          <form [formGroup]="resourceForm" role="form">
+            <div class="row">
+              <div class=" col-md-12">
+                <label>Descrição</label>
+                <input type="text" class="form-control" placeholder="Digite a Descrição da Categoria"
+                  formControlName="Descricao" [(ngModel)]="resourceForm.Descricao" required />
+              </div>
+            </div>
+            <button type="button" class="btn btn-success" [disabled]="!formValido()" (click)="salvar()"
+              style="margin-top: 2%">
+              Salvar
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

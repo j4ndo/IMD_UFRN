@@ -5,12 +5,14 @@ using PreservWebApi.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace PreservWebApi.Controllers
 {
     //[Authorize("Bearer")]
     [Route("/api/[controller]")]
     [ApiController]
+    [DisableCors]
     public class CategoriaController : ControllerBase
     {
         private readonly AppDbContext _context;

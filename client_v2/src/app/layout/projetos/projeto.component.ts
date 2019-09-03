@@ -35,6 +35,7 @@ export class ProjetoComponent implements OnInit {
 
           this.http.get<any>(`${environment.apiSistema}Projeto/`).subscribe(data => {
             this.projetos = data;
+            console.log(this.projetos);
           });  
     }
 

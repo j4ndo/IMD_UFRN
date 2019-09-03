@@ -1,0 +1,52 @@
+<div class="col-sm">
+  <div class="card">
+    <div class="card-body">      
+      <div class="row">
+        <div class="col-lg">          
+          <form [formGroup]="resourceForm" role="form">
+            <div class="row">
+              <div class=" col-md-6">
+                <label>Login</label>
+                <input type="text" class="form-control" placeholder="Digite o Login"
+                  formControlName="Descricao" [(ngModel)]="resourceForm.Login" required />
+              </div>
+              <div class=" col-md-6">
+                  <label>Senha</label>
+                  <input type="password" class="form-control" placeholder="Digite a Senha"
+                    formControlName="Senha" [(ngModel)]="resourceForm.Senha" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class=" col-md-12">
+                  <label>Email</label>
+                  <input type="text" class="form-control" placeholder="Digite o Email"
+                    formControlName="Email" [(ngModel)]="resourceForm.Email" />
+                </div>
+            </div>    
+            <div class="row">
+                <div class=" col-md-8">
+                  <label>Chave de Acesso</label>
+                  <input type="text" class="form-control" placeholder="Digite o Chave de Acesso"
+                    formControlName="ChaveAcesso" [(ngModel)]="resourceForm.ChaveAcesso" />
+                </div>
+                <div class=" col-md-4">
+                    <label>Perfil</label><br>
+                    <select name="Perfil" id="Perfil" ng-model="resourceForm.IdPerfil" (change)="atualizaPerfil($event.srcElement.value)">
+                      <option value="0"> Selecione um Perfil</option>
+                      <option *ngFor="let item of resPerfis" value={{item.idPerfil}}>
+                        {{ item.descricao}}
+                      </option>
+                    </select>                              
+                  </div>
+            </div>            
+            <button type="button" class="btn btn-success" [disabled]="!formValido()" (click)="salvar()"
+              style="margin-top: 2%">
+              Salvar
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

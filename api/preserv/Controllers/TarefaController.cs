@@ -4,10 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using PreservWebApi.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 namespace PreservWebApi.Controllers
 {
     [Route("/api/[controller]")]
+    [DisableCors]
     public class TarefaController : ControllerBase
     {
         private readonly AppDbContext _context;

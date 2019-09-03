@@ -3,50 +3,53 @@
     <div class="card-body">      
       <div class="row">
         <div class="col-lg">          
-          <form [formGroup]="projetoForm" role="form">
+          <form [formGroup]="resourceForm" role="form">
             <div class="row">
-              <div class=" col-md-6">
+              <div class=" col-md-12">
                 <label>Descrição</label>
                 <input type="text" class="form-control" placeholder="Digite a Descrição do Projeto"
-                  formControlName="Descricao" [(ngModel)]="projetoForm.Descricao" required />
-              </div>
-              <div class=" col-md-3">
-                <label>Prazo Previsto Mínimo</label>
-                <input type="text" class="form-control" placeholder="Digite o Prazo Mínimo"
-                  formControlName="PrazoPrevistoMinimo" [(ngModel)]="projetoForm.PrazoPrevistoMinimo" />
-              </div>
-              <div class=" col-md-3">
-                <label>Prazo Previsto Máximo</label>
-                <input type="text" class="form-control" placeholder="Digite o Prazo Máximo"
-                  formControlName="PrazoPrevistoMaximo" [(ngModel)]="projetoForm.PrazoPrevistoMaximo" />
+                  formControlName="Descricao" [(ngModel)]="resourceForm.Descricao" required />
               </div>
             </div>
             <br>
             <div class="row">
-                <div class=" col-md-4">
-                  <label>Valor Previsto</label>
-                  <input type="text" class="form-control" placeholder="Informe o Valor Previsto"
-                    formControlName="ValorPrevisto" [(ngModel)]="projetoForm.ValorPrevisto" required />
-                </div>
-                <div class=" col-md-4">
-                  <label>Unidade de Tempo</label>
-                  <select>
-                    <option value="0"> Selecione uma Unidade de Tempo</option>
-                    <option *ngFor="let item of resUnidadesTempo" value= {{item.idUnidadeTempo}}>
-                      {{item.Descricao}}
-                    </option>
-                  </select>                 
-                </div>
-                <div class=" col-md-4">
-                    <label>Categoria</label><br>
-                    <select>
-                      <option value="0"> Selecione uma Categoria</option>
-                      <option *ngFor="let item of resCategorias" value= {{item.idCategoria}}>
-                        {{item.Descricao}}
-                      </option>
-                    </select>                 
-                  </div>
+              <div class=" col-md-4">
+                <label>Prazo Previsto Mínimo</label>
+                <input type="text" class="form-control" placeholder="Digite o Prazo Mínimo"
+                  formControlName="PrazoPrevistoMinimo" [(ngModel)]="resourceForm.PrazoPrevistoMinimo" />
               </div>
+              <div class=" col-md-4">
+                <label>Prazo Previsto Máximo</label>
+                <input type="text" class="form-control" placeholder="Digite o Prazo Máximo"
+                  formControlName="PrazoPrevistoMaximo" [(ngModel)]="resourceForm.PrazoPrevistoMaximo"/>
+              </div>
+              <div class=" col-md-4">
+                <label>Unidade de Tempo</label>
+                <select ng-model="resourceForm.IdUnidadeTempo" (change)="atualizaUnidadeTempo($event.srcElement.value)">
+                  <option value="0"> Selecione uma Unidade de Tempo</option>
+                  <option *ngFor="let item of resUnidadesTempo" value= {{item.idUnidadeTempo}}>
+                    {{item.descricao}}
+                  </option>
+                </select>                 
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class=" col-md-4">
+                <label>Valor Previsto</label>
+                <input type="text" class="form-control" placeholder="Informe o Valor Previsto"
+                  formControlName="ValorPrevisto" [(ngModel)]="resourceForm.ValorPrevisto" required />
+              </div>
+              <div class=" col-md-4">
+                <label>Categoria</label><br>
+                <select name="Categoria" id="Categoria" ng-model="resourceForm.IdCategoria" (change)="atualizaCategoria($event.srcElement.value)">
+                  <option value="0"> Selecione uma Categoria</option>
+                  <option *ngFor="let item of resCategorias" value={{item.idCategoria}}>
+                    {{ item.descricao}}
+                  </option>
+                </select>                              
+              </div>
+            </div>
             <button type="button" class="btn btn-success" [disabled]="!formValido()" (click)="salvar()"
               style="margin-top: 2%">
               Salvar
