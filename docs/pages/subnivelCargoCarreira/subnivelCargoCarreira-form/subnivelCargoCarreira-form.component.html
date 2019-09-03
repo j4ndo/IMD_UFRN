@@ -1,0 +1,164 @@
+<tce-breadcrumb
+  [items]="[{text: 'Subniveis de Cargo e Carreira', link: '/dashboard/subnivelcargocarreira'}, {text: pageTitle}]">
+</tce-breadcrumb>
+<tce-server-error-messages [server-error-messages]="serverErrorMessages"></tce-server-error-messages>
+
+<div class="card ">
+  <div class="card-body">
+    <div class="card-header">
+      <strong>{{pageTitle}}</strong>
+    </div>
+    <div class="box section-block">
+      <fieldset class="withBorder">
+        <legend class="withBorder">Dados do Subnível:</legend>
+        <form [formGroup]="resourceForm" (submit)="submitForm()" class="m-l-reset">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="nomeCarreira">Tipo de Cadastro</label>
+              <div id="" class="row">
+                <label for="subnivelParaCargo" class="radio-inline">
+                  <input (change)="changeTipoDeCadastroDeSubnivel(1)" [checked]="(tipoCadastroSubnivelEhCargo)" [(ngModel)]="labelCargoOuCarreira" bindValue="subnivelParaCargo" type="radio" value="subnivelParaCargo"  formControlName="subnivelParaCargo" name="subnivelParaCargoOuCarreira"/>Cadastrar subníveis de um cargo
+                </label>
+                <label for="subnivelParaCarreira" class="radio-inline">
+                  <input [attr.disabled]="desabilitarCadastroPorCarreira ? '' : null" (change)="changeTipoDeCadastroDeSubnivel(2)" [checked]="(tipoCadastroSubnivelEhCarreira)" type="radio" name="subnivelParaCargoOuCarreira"/>Cadastrar subníveis de uma carreira
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="form-group col-md-4">
+                  <label for="nomeOrgao">Órgão</label>
+                  <ng-select [items]="resOrgaos" required bindLabel="nomeOrgao" bindValue="idOrgao"
+                  formControlName="idOrgao" placeholder="Selecione um Órgão"
+                  [ngClass]="{ 'is-invalid': resourceForm.errors }" (change)="changeOrgao($event.idOrgao)"></ng-select>
+                  <app-form-field-error [form-control]="resourceForm.get('idOrgao')"></app-form-field-error>
+              </div>
+              <div class="form-group col-md-3">
+                  <label for="nomeCargoOuCarreira" id="nomeCargoOuCarreira">{{tipoCadastroSubnivel}}</label>
+                  <ng-select *ngIf="tipoCadastroSubnivelEhCargo" [disabled]="true" [items]="resCargosByOrgao"  bindLabel="nomeCargo" bindValue="idCargo" 
+                    formControlName="idCargo" placeholder="Selecione um Cargo" 
+                    [ngClass]="{ 'is-invalid': submitted && resourceForm.errors }" (change)="changeCargo($event.idCargo)">
+                  </ng-select>
+
+                  <ng-select *ngIf="!tipoCadastroSubnivelEhCargo" [disabled]="true" [items]="resCarreirasByOrgao" (change)="changeCarreira($event)" bindLabel="nomeCarreira" bindValue="idCarreira" 
+                    formControlName="idCarreira" placeholder="Selecione uma Carreira" 
+                    [ngClass]="{ 'is-invalid': submitted && resourceForm.errors }">
+                  </ng-select>
+
+                  <app-form-field-error *ngIf="tipoCadastroSubnivelEhCargo" [form-control]="resourceForm.get('idCargo')"></app-form-field-error>
+                  <app-form-field-error *ngIf="!tipoCadastroSubnivelEhCargo" [form-control]="resourceForm.get('idCarreira')"></app-form-field-error>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="nomeSubnivel">Nome do Subnível:</label>
+                <input type="text" maxlength="50"  class="form-control" id="nomeSubnivel" formControlName="nomeSubnivel" (input)="changeNomeSubnivel()" placeholder="Nome do Subnível">
+                <div class="erroMensagem" id="jaAddSubnivel"></div>
+
+                <!-- <app-form-field-error [form-control]="resourceForm.get('nomeSubnivel')"> </app-form-field-error> -->
+              </div>
+              <div class="form-group col-md-1">
+                <label for="acao">Ação</label>
+                <button [disabled]="desabilitaBotaoAdicionarNomeSubnivel" *ngIf="currentAction === 'edit'" (click)="adicionarSubnivelNaEdicao()" type="button" class="btn btn-default btn-circle form-control" title="Adicionar Subnível">
+                  <i class="fa fa-plus btn-circle-icon"></i>
+                </button>
+                <button [disabled]="desabilitaBotaoAdicionarNomeSubnivel" *ngIf="currentAction === 'new'" (click)="adicionarSubnivelNoRegistro()" type="button" class="btn btn-default btn-circle form-control" title="Adicionar Subnível">
+                  <i class="fa fa-plus btn-circle-icon"></i>
+                </button>
+            </div>
+          </div>
+
+          <!-- Lista de subniveis adicionados -->
+          <div class="row">
+            <div class="form-group col-md-7"></div>
+            <div class="form-group col-md-5">
+              <table class="table table-striped" >
+                <thead class="thead-light">
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Subnível</th>
+                    <th *ngIf="currentAction === 'edit'"  class="text-center">Status</th>
+                    <th class="text-center">Ações</th>
+                  </tr>
+
+                </thead>
+                <tbody *ngIf='resSubniveis && resSubniveis.length'>
+                  <tr *ngFor="let res of resSubniveis ; index as i">
+                    <td class="text-center" >
+                      <small>{{i+1}}</small>
+                    </td>
+                    <td *ngIf="currentAction === 'edit'" >
+                      <small>{{res.nomeSubnivel}}</small>
+                    </td>
+                    <td *ngIf="currentAction === 'edit'"  class="text-center">
+                      <small *ngIf="res.ativo">Ativo</small>
+                      <small *ngIf="!res.ativo">Inativo</small>
+                    </td>                      
+                    <td *ngIf="currentAction === 'new'" >
+                      <small>{{res}}</small>
+                    </td>
+                    <td class="text-center">
+                      <a (click)="trocarComItemAcima(i)" title="Trocar com o subnível acima" style="color: black !important"
+                        class="  btn-sm mr-2 d-inline "><i class="fa fa-arrow-up"></i>
+                      </a>
+                      <a (click)="trocarComItemAbaixo(i)" title="Trocar com o subnível abaixo" style="color: black !important"
+                        class="btn-sm mr-2 d-inline "><i class="fa fa-arrow-down"></i>
+                      </a>
+
+                      <a title="Inativar subnível" *ngIf="res.ativo === true && currentAction === 'edit'" (click)="desativarSubnivelEscolhido(res)" style="color: #186a64 !important"
+                        class="btn-sm mr-2 d-inline"><i class="fa fa-toggle-on"></i>
+                      </a>
+                      <a title="Ativar subnível" *ngIf="res.ativo === false && currentAction === 'edit'" (click)="ativarSubnivelEscolhido(res)" 
+                        class="btn-sm mr-2 d-inline text-danger"><i class="fa fa-toggle-off"></i>
+                      </a>
+
+                      <a title="Excluir subnível" (click)="excluirSubnivelEscolhido(res)"
+                        class="btn-sm mr-2 d-inline text-danger"><i class="fa fa-trash"></i>
+                      </a>
+
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody *ngIf='resSubniveis.length <=0'>
+                  <tr>
+                    <td class="text-center">
+                      <small></small>
+                    </td>
+                    <td class="text-center">
+                      <small>Nenhum subnível adicionado</small>
+                    </td>
+                    <td class="text-center">
+                      <small></small>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+
+
+
+          <tce-buttons *ngIf="currentAction === 'new'"  [actions]="actions" [disabled]="resourceForm.invalid" [clear]="false"></tce-buttons>
+
+
+
+          <div class="form-group" *ngIf="currentAction === 'edit'" >
+            <div class="row ml-2">
+                  <button (click)="update()"  type="button" class="btn btn-default mr-1" [disabled]="resourceForm.invalid">
+                    Salvar
+                  </button>
+              <div *ngIf="clear">
+                  <button type="reset" class="btn btn-warning mr-1">Limpar</button>
+              </div>
+              <div class="mr-1 float-right">
+                  <button type="button" class="btn btn-secondary" (click)="back()">Voltar</button>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+

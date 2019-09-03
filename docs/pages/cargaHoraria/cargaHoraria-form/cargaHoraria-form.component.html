@@ -1,0 +1,45 @@
+<tce-breadcrumb [items]="[{text: 'Cadastro Carga Horária', link: '/dashboard/cargahoraria'}, {text: pageTitle}]">
+</tce-breadcrumb>
+<tce-server-error-messages [server-error-messages]="serverErrorMessages"></tce-server-error-messages>
+
+<div class="card ">
+  <div class="card-body">
+    <div class="card-header">
+      <strong>{{pageTitle}}</strong>
+    </div>
+    <div class="box section-block">
+      <fieldset class="withBorder">
+        <legend class="withBorder">Cadastro de Carga Horária: </legend>
+        <form [formGroup]="resourceForm" (submit)="submitForm()" class="m-l-reset">
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="cargaHorariaMinima">Carga Horária Mínima (h)</label>
+              <div [ngClass]="getClass('cargaHorariaMinima') ? 'form-group has-success' : 'form-group has-danger'">
+                <input type="text" class="form-control" id="cargaHorariaMinima" (keyup)="validaCargaHoraria($event)" (change)="validaCargaHoraria($event)"
+                  formControlName="cargaHorariaMinima" autocomplete="off" placeholder="Insira a Carga Horária Mínima" pattern="">
+                <app-form-field-error [form-control]="resourceForm.get('cargaHorariaMaxima')"></app-form-field-error>
+                <div class="erroMensagem" id="validacargaHorariaMinima"></div>
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="cargaHorariaMaxima">Carga Horária Máxima (h)</label>
+              <div [ngClass]="getClass('cargaHorariaMaxima') ? 'form-group has-success' : 'form-group has-danger'">
+                <input type="text" class="form-control" id="cargaHorariaMaxima" (keyup)="validaCargaHoraria($event)" (change)="validaCargaHoraria($event)"
+                  formControlName="cargaHorariaMaxima" autocomplete="off" placeholder="Insira a Carga Horária Máxima">
+                <app-form-field-error [form-control]="resourceForm.get('cargaHorariaMaxima')"></app-form-field-error>
+                <div class="erroMensagem" id="validacargaHorariaMaxima"></div>
+              </div>
+            </div>  
+          </div>
+          <div class="form-group col-md-10">
+            <div class="form-group active pl-2">
+              <input class="form-check-input ng-valid ng-dirty ng-touched" id="ativo" name="ativo" type="checkbox"
+                ng-reflect-name="ativo" formControlName="ativo"> <label for="ativo">Ativo</label>
+            </div>
+          </div>
+          <tce-buttons [actions]="actions" [disabled]="resourceForm.invalid" [clear]="false"></tce-buttons>
+        </form>
+      </fieldset>
+    </div>
+  </div>
+</div>

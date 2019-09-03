@@ -1,0 +1,51 @@
+<tce-breadcrumb [items]="[{text: 'Salário Mínimo', link: '/dashboard/salariominimo'}, {text: pageTitle}]"></tce-breadcrumb>
+<tce-server-error-messages [server-error-messages]="serverErrorMessages"></tce-server-error-messages>
+
+<div class="card ">
+  <div class="card-body">
+    <div class="card-header">
+      <strong>{{pageTitle}}</strong>
+    </div>
+    <div class="box section-block">
+      <div class="box section-block">
+        <fieldset class="withBorder">
+          <legend class="withBorder">Dados salário:</legend>
+          <form [formGroup]="resourceForm" (submit)="submitForm()" class="m-l-reset">
+            <div class="row">
+              <div class="form-group col-md-3">
+                <label for="mesReferencia">Mês de referência</label>
+                <div [ngClass]="getClass('mesReferencia') ? 'form-group has-success' : 'form-group has-danger'">
+                <ng-select [items]="meses" bindLabel="extenso" bindValue="codigo" placeholder="Mês de referencia" formControlName="mesReferencia" ></ng-select>
+                <app-form-field-error [form-control]="resourceForm.get('mesReferencia')"> </app-form-field-error>
+                </div>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="anoReferencia">Ano de referência (AAAA):</label>
+                <div [ngClass]="getClass('anoReferencia') ? 'form-group has-success' : 'form-group has-danger'">
+                  <input type="number" class="form-control" id="anoReferencia" formControlName="anoReferencia" (change)="validaAno()"
+                    placeholder="Ano de referência">
+                  <app-form-field-error [form-control]="resourceForm.get('anoReferencia')"></app-form-field-error>
+                  <div class="erroMensagem" id="validaAno"></div>
+                </div>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="anoProcesso">Valor (R$)</label>
+                <div [ngClass]="getClass('valorSalarioMinimo') ? 'form-group has-success' : 'form-group has-danger'">
+                <input data-mask="currency" class="form-control" id="valorSalarioMinimo" formControlName="valorSalarioMinimo"
+                  placeholder="Valor">
+                <app-form-field-error [form-control]="resourceForm.get('valorSalarioMinimo')"></app-form-field-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-10">
+              <div class="form-group active pl-2">
+                <input class="form-check-input ng-valid ng-dirty ng-touched" id="ativo" name="ativo" type="checkbox"
+                  ng-reflect-name="ativo" formControlName="ativo"> <label for="ativo">Ativo</label>
+              </div>
+            </div>
+            <tce-buttons [actions]="actions" [disabled]="resourceForm.invalid" [clear]="false"></tce-buttons>
+          </form>
+        </fieldset>
+      </div>
+    </div>
+  </div>

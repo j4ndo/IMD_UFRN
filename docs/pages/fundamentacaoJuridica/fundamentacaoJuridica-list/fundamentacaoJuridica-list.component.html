@@ -1,0 +1,91 @@
+<tce-breadcrumb [items]="[{text: 'Fundamentação Jurídica Concessão', link: '/dashboard/fundamentacaojuridica'}, {text: pageTitle}]"></tce-breadcrumb>
+<tce-server-error-messages [server-error-messages]="serverErrorMessages"></tce-server-error-messages>
+
+<div class="box section-block">
+  <header>
+    <h4>Fundamentações Jurídicas da Concessão</h4>
+  </header>
+
+  <div id="accordion">
+    <div class="card">
+
+      <div class="card-header" id="consulta">
+       
+          Resultado da Consulta
+     
+        <a [routerLink]="['../new']" class="btn btn-outline-warning float-right btn-sm">
+          <i class="fa fa-plus"> Novo</i>
+        </a>
+      </div>
+      <div id="collapseTwo" class="collapse show" aria-labelledby="consulta" data-parent="#accordion"
+        style="padding: .75rem 1.25rem;">
+        <div class="card-body table-responsive">
+          <table datatable [dtOptions]="dtOptions" class="table table-striped" *ngIf='resources && resources.length'>
+            <thead class="thead-light">
+              <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Descrição</th>
+                <th class="text-center">Ementa</th>
+                <th class="text-center">Início de vigência</th>
+                <th class="text-center">Fim de vigência</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Ações</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let res of resources, index as ind ">
+                <td class="text-center">
+                  <small>{{ ind+1 }}</small>
+                </td>
+                <td class="text-center">
+                  <small>{{ res.descricaoFundamentacaoJuridicaConcessao }}</small>
+                </td>
+                <td class="text-center">
+                  <small>{{ res.ementa }}</small>
+                </td>
+                <td class="text-center">
+                  <small>{{ res.dataInicioVigencia | date :'DD/MM/YYYY' }}</small>
+                </td>
+                <td class="text-center">
+                  <small>{{ res.dataFimVigencia | date :'DD/MM/YYYY' }}</small>
+                </td>
+                <td class="text-center">
+                  <div *ngIf="res.ativo; then thenBlock else elseBlock"></div>
+                  <ng-template #thenBlock><small>Ativo</small></ng-template>
+                  <ng-template #elseBlock><small>Inativo</small></ng-template>
+                </td>
+                <td class="text-center">
+                  <a [routerLink]="[res.idFundamentacaoJuridicaConcessao, 'edit']"
+                    class="btn btn-outline-warning btn-sm mr-2 d-inline">Editar</a>
+                  <button (click)="deleteResource(res)" class="btn btn-outline-danger btn-sm d-inline">Excluir</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <table datatable [dtOptions]="dtOptions" class="table table-striped" *ngIf='resources.length == 0'>
+            <thead class="thead-light">
+              <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Descrição</th>
+                <th class="text-center">Ementa</th>
+                <th class="text-center">Início de vigência</th>
+                <th class="text-center">Fim de vigência</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Ações</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="odd"><td valign="top" colspan="7" class="dataTables_empty">Nenhum registro encontrado</td></tr>
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
