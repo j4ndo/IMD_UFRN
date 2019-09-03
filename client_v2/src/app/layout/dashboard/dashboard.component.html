@@ -1,0 +1,45 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">Visão <small>Geral</small></h2>
+    <hr />
+    <div class="row">
+        <div class="col-xl-4 col-lg" style="margin-bottom: 2%;">
+            <app-stat [bgClass]="'primary'" [icon]="' fa-tags'" [count]="26" [label]="'Projetos'"></app-stat>
+        </div>
+        <div class="col-xl-4 col-lg" style="margin-bottom: 2%;">
+            <app-stat [bgClass]="'warning'" [icon]="'fa-tasks'" [count]="12" [label]="'Tarefas!'"></app-stat>
+        </div>
+        <div class="col-xl-4 col-lg" style="margin-bottom: 2%;">
+            <app-stat [bgClass]="'success'" [icon]="'fa-newspaper-o'" [count]="124" [label]="'Contratos!'"></app-stat>
+        </div>
+    </div>
+    <hr />
+    <!-- <ngb-alert [type]="alert.type" (close)="closeAlert(alert)" *ngFor="let alert of alerts">{{ alert.message }}</ngb-alert> -->
+    <hr />
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card card-default">
+
+                <!-- <div class="card-header">
+                    Doughnut Chart
+                </div> -->
+                <div class="card-body">
+                    <canvas baseChart height="180px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card card-default mb-3">
+                <div class="card-header"><i class="fa fa-bell fa-fw"></i> Notifications card</div>
+
+                <app-notification></app-notification>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
