@@ -3,33 +3,58 @@
 <div class="col-sm">
     <div class="card">
         <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Projeto</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- <tr *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: pageActual }"> -->
-                    <tr>
-                        <td>
-                            <div class="col-sm-4">
-                                <div class="card text-white bg-primary mb-3">
-                                    <div class="card-header">Header</div>
-                                    <div class="card-body">
-                                        <h4 class="card-title">Primary card title</h4>
-                                        <p class="card-text">
-                                            Some quick example text to build on the card title and make up the bulk of the card's content.
-                                        </p>
-                                    </div>
+                <ngb-tabset [justify]="currentJustify">
+                        <ngb-tab title="Contratos">
+                            <ng-template ngbTabContent>
+                                <div class="card-body table-responsive">
+                                    <table datatable [dtOptions]="dtOptions" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Descrição</th>
+                                                <th>Valor Contratado</th>
+                                                <th>Data Criação</th>
+                                                <th>Data Encerramento</th>
+                                                <th>Projeto</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let res of contratos; index as i">
+                                                <td class="text-center">
+                                                    <small>{{i+1}}</small>
+                                                </td>
+                                                <td class="text-left">
+                                                    <small>{{res.descricao}}</small>
+                                                </td>
+                                                <td class="text-left">
+                                                        <small>{{res.valorContratado | currency}}</small>
+                                                </td>
+                                                <td class="text-left">
+                                                        <small>{{res.dataCriacao}}</small>
+                                                </td>
+                                                <td class="text-left">
+                                                        <small>{{res.dataEncerramento}}</small>
+                                                </td>
+                                                <td class="text-left">
+                                                        <small>{{res.projeto.descricao}}</small>
+                                                    </td>
+                                                    <th>
+                                                    #
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </div>
-                        </td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab>
+                            <ng-template ngbTabTitle>Novo</ng-template>
+                            <ng-template ngbTabContent>
+                                
+                            </ng-template>
+                        </ngb-tab>
+                    </ngb-tabset>
         </div>
     </div>
 </div>
