@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Cors;
 
 namespace PreservWebApi.Controllers
 {
-    //[Authorize("Bearer")]
+    [Authorize("Bearer")]
     [Route("/api/[controller]")]
     [ApiController]
     [DisableCors]
