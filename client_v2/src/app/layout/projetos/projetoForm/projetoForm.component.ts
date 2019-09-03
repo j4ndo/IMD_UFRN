@@ -12,7 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProjetoFormComponent implements OnInit {
     projetoForm: FormGroup;
-    constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+    resUnidadesTempo: Array<any> = []; 
+    resCategorias: Array<any> = [];
+
+    constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private http: HttpClient) {
         
     }
 
@@ -31,9 +34,26 @@ export class ProjetoFormComponent implements OnInit {
             Contratos : new FormControl([null, []]),
             Tarefas : new FormControl([null, []])            
         });
+
+        this.http.get<any>(`${environment.apiSistema}UnidadeTempo/`).subscribe(data => {
+            this.resUnidadesTempo = data;
+        }); 
+        
+        this.http.get<any>(`${environment.apiSistema}Categoria/`).subscribe(data => {
+            this.resCategorias = data;
+        }); 
                 
     }
     public formValido(): boolean {
         return this.projetoForm.valid;
     }
+
+    public getClass(control?: string): Boolean {
+        if (this.projetoForm.get(control).valid) {
+          return true;
+        }
+    
+        return false;
+      }
+    
 }

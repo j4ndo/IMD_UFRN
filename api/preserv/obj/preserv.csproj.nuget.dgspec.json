@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\39021347806\\dev\\IMD_UFRN\\api\\preserv\\preserv.csproj": {}
+    "C:\\Users\\70098534440\\dev\\preserv\\IMD_UFRN\\api\\preserv\\preserv.csproj": {}
   },
   "projects": {
-    "C:\\Users\\39021347806\\dev\\IMD_UFRN\\api\\preserv\\preserv.csproj": {
+    "C:\\Users\\70098534440\\dev\\preserv\\IMD_UFRN\\api\\preserv\\preserv.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\39021347806\\dev\\IMD_UFRN\\api\\preserv\\preserv.csproj",
+        "projectUniqueName": "C:\\Users\\70098534440\\dev\\preserv\\IMD_UFRN\\api\\preserv\\preserv.csproj",
         "projectName": "preserv",
-        "projectPath": "C:\\Users\\39021347806\\dev\\IMD_UFRN\\api\\preserv\\preserv.csproj",
-        "packagesPath": "C:\\Users\\39021347806\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\39021347806\\dev\\IMD_UFRN\\api\\preserv\\obj\\",
+        "projectPath": "C:\\Users\\70098534440\\dev\\preserv\\IMD_UFRN\\api\\preserv\\preserv.csproj",
+        "packagesPath": "C:\\Users\\70098534440\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\70098534440\\dev\\preserv\\IMD_UFRN\\api\\preserv\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\39021347806\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\70098534440\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"

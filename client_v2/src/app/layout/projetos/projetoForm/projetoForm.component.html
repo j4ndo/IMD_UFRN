@@ -23,23 +23,29 @@
             </div>
             <br>
             <div class="row">
-                <div class=" col-md-6">
+                <div class=" col-md-4">
                   <label>Valor Previsto</label>
                   <input type="text" class="form-control" placeholder="Informe o Valor Previsto"
                     formControlName="ValorPrevisto" [(ngModel)]="projetoForm.ValorPrevisto" required />
                 </div>
-                <div class=" col-md-3">
-                  <label>UnidadeTempo</label>
-                  <ng-select [items]="resLegislacoes" bindLabel="fullDescription" bindValue="idLegislacao"
-                    formControlName="idLegislacao" placeholder="Selecione a Legislação"
-                    [ngClass]="{ 'is-invalid': resourceForm.errors }"></ng-select>
-                  <app-form-field-error [form-control]="resourceForm.get('idLegislacao')"></app-form-field-error>
-                  
+                <div class=" col-md-4">
+                  <label>Unidade de Tempo</label>
+                  <select>
+                    <option value="0"> Selecione uma Unidade de Tempo</option>
+                    <option *ngFor="let item of resUnidadesTempo" value= {{item.idUnidadeTempo}}>
+                      {{item.Descricao}}
+                    </option>
+                  </select>                 
                 </div>
-                <div class=" col-md-3">
-                  <label>Categoria</label>
-                  
-                </div>
+                <div class=" col-md-4">
+                    <label>Categoria</label><br>
+                    <select>
+                      <option value="0"> Selecione uma Categoria</option>
+                      <option *ngFor="let item of resCategorias" value= {{item.idCategoria}}>
+                        {{item.Descricao}}
+                      </option>
+                    </select>                 
+                  </div>
               </div>
             <button type="button" class="btn btn-success" [disabled]="!formValido()" (click)="salvar()"
               style="margin-top: 2%">
