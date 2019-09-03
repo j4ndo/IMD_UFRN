@@ -12,7 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
    
-    public loginForm: FormGroup;
+    // public loginForm: FormGroup;
 
     constructor(
         private authService: AuthService,
@@ -20,20 +20,21 @@ export class LoginComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.getUser();
+        console.log("vbdfb")
+        // this.getUser();
     }
 
     getUser(){
-        this.loginForm = new FormGroup({
-            'login': new FormControl(null, [Validators.required]),
-            'senha': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-          });
+        // this.loginForm = new FormGroup({
+        //     'login': new FormControl(null, [Validators.required]),
+        //     'senha': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+        //   });
     }
 
     onLoggedin() {
-        if (this.loginForm.valid){
-            this.authService.logarUsuario(this.loginForm.get('login').value, this.loginForm.get('senha').value);
-          }
+        // if (this.loginForm.valid){
+        //     this.authService.logarUsuario(this.loginForm.get('login').value, this.loginForm.get('senha').value);
+        //   }
         localStorage.setItem('isLoggedin', 'true');
     }
 }

@@ -26,3 +26,17 @@ C:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\pr
 c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.dll
 c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.pdb
 c:\Users\70098534440\dev\preserv\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorTargetAssemblyInfo.cache
+C:\Users\39021347806\dev\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.deps.json
+C:\Users\39021347806\dev\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.runtimeconfig.json
+C:\Users\39021347806\dev\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.runtimeconfig.dev.json
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.dll
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\bin\Debug\netcoreapp2.2\preserv.pdb
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.csprojAssemblyReference.cache
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.csproj.CoreCompileInputs.cache
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorAssemblyInfo.cache
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorAssemblyInfo.cs
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.AssemblyInfoInputs.cache
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.AssemblyInfo.cs
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.RazorTargetAssemblyInfo.cache
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.dll
+c:\Users\39021347806\dev\IMD_UFRN\api\preserv\obj\Debug\netcoreapp2.2\preserv.pdb

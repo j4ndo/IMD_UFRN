@@ -5,7 +5,7 @@ import { throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { CacheService } from './cache.service';
-import { UiService } from './ui-service.service';
+// import { UiService } from './ui-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class ApiService {
       // tslint:disable-next-line: deprecation
       private http: Http,
     private router: Router,
-    private uiService: UiService,
+    // private uiService: UiService,
     private cacheService: CacheService) { }
 
   get(url: string) {
@@ -90,7 +90,7 @@ export class ApiService {
     }
     if (error.statusCode >= 500 || error.statusCode === 0) {
       console.log('500', 'server error');
-      this.uiService.exibirErro500();
+      // this.uiService.exibirErro500();
     }
 
     return throwError(error);

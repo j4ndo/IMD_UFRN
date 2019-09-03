@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { CacheService } from './cache.service';
-import { UiService } from './ui-service.service';
 import { Router } from '@angular/router';
 // import { Observable } from 'rxjs';
 // import 'rxjs/add/operator/do';
@@ -16,7 +15,6 @@ export class AuthService {
   constructor(
     private apiService: ApiService,
     private cacheServie: CacheService,
-    private uiService: UiService,
     private router: Router,
 
   ) { }
@@ -29,7 +27,7 @@ export class AuthService {
       },
       erro => {
         if(erro['statusCode'] != 500){
-          this.uiService.exibirErro("Usuario e/ ou senha inválidos!");
+          // this.uiService.exibirErro("Usuario e/ ou senha inválidos!");
         }
       }
     );
@@ -44,14 +42,14 @@ export class AuthService {
     this.apiService.get('usuarios/perfil').subscribe(
       sucesso => {
         this.cacheServie.setItem('perfil', sucesso);
-        this.uiService.exibirSucesso("Seja Bem-Vindo!", 'Atenticado com sucesso!');
+        // this.uiService.exibirSucesso("Seja Bem-Vindo!", 'Atenticado com sucesso!');
         this.router.navigate(['dashboard']);
         this.usuarioAdmin();
       },
       erro => {
         console.log(erro);
         if(erro['statusCode'] != 500){
-          this.uiService.exibirErro("Usuario e/ ou senha inválidos!");
+          // this.uiService.exibirErro("Usuario e/ ou senha inválidos!");
         }
       }
     );

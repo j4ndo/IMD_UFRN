@@ -16,12 +16,9 @@
     <!-- <ngb-alert [type]="alert.type" (close)="closeAlert(alert)" *ngFor="let alert of alerts">{{ alert.message }}</ngb-alert> -->
     <hr />
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg">
             <div class="card card-default">
 
-                <!-- <div class="card-header">
-                    Doughnut Chart
-                </div> -->
                 <div class="card-body">
                     <canvas baseChart height="180px" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
                     </canvas>
@@ -31,7 +28,7 @@
 
         </div>
 
-        <div class="col-lg-4">
+        <!-- <div class="col-lg-4">
             <div class="card card-default mb-3">
                 <div class="card-header"><i class="fa fa-bell fa-fw"></i> Notifications card</div>
 
@@ -39,7 +36,7 @@
 
             </div>
 
-        </div>
+        </div> -->
 
     </div>
 </div>

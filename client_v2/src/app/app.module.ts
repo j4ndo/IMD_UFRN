@@ -1,3 +1,4 @@
+
 import { DataTablesModule } from 'angular-datatables';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -7,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LanguageTranslationModule } from './shared/modules/language-translation/language-translation.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +25,8 @@ import { AuthGuard } from './shared';
         AppRoutingModule,
         NgbModule,
         DataTablesModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpModule
     ],
     declarations: [AppComponent],
     providers: [AuthGuard],

@@ -38,8 +38,8 @@ export class UsuarioComponent implements OnInit {
     }
 
     private getContratos():any{
-        console.log("bjfmsd");
-        // this.getUsuario();
+    ;
+        this.getUsuario();
     }  
 
     protected buildForm() {
