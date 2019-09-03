@@ -111,6 +111,7 @@ namespace preserv
                 .AllowAnyHeader()
                 .AllowCredentials()); */
             app.UseCors(option => option.WithOrigins ("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(option => option.WithOrigins ("http://localhost:5001").AllowAnyHeader().AllowAnyMethod());
             
             //app.UseHttpsRedirection();
             app.UseMvc();

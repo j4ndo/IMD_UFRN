@@ -9,36 +9,44 @@
                             <table datatable [dtOptions]="dtOptions" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Projeto</th>
+                                        <th>#</th>
+                                        <th>Descrição</th>
+                                        <th>Prazo Previsto Mínimo</th>
+                                        <th>Prazo Previsto Máximo</th>
+                                        <th>Valor Previsto</th>
+                                        <th>Categoria</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- <tr *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: pageActual }"> -->
-                                    <tr>
-                                        <td>
-                                            <div class="col-sm">
-                                                <div class="card text-white bg-primary mb-3">
-                                                    <div class="card-header">Header</div>
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">Primary card title</h4>
-                                                        <p class="card-text">
-                                                            Some quick example text to build on the card title and make up the bulk of the
-                                                            card's content.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <tr *ngFor="let res of projetos; index as i">
+                                        <td class="text-center">
+                                            <small>{{i+1}}</small>
                                         </td>
-                                        <td>
+                                        <td class="text-left">
+                                            <small>{{res.descricao}}</small>
+                                        </td>
+                                        <td class="text-center">
+                                            <small>{{res.prazoPrevistoMinimo}}</small>
+                                        </td>
+                                        <td class="text-center">
+                                            <small>{{res.prazoPrevistoMaximo}}</small>
+                                        </td>
+                                        <td class="text-center">
+                                            <small>{{res.valorPrevisto | currency }}</small>
+                                        </td>
+                                        <td class="text-left">
+                                            <small>{{res.categoria.descricao}}</small>
+                                        </td>
+
+                                        <th>
                                             <a
-                                                [routerLink]="['/contrato/novo']"
+                                                [routerLink]="['/projeto/novo']"
                                                 [routerLinkActive]="['router-link-active']"
-                                                class="list-group-item"
-                                            >
+                                                class="list-group-item">
                                                 <i class="fa fa-tasks"></i>&nbsp;
                                             </a>
-                                        </td>
+                                        </th>
                                     </tr>
                                 </tbody>
                             </table>

@@ -1,3 +1,54 @@
-<p>
-  projetoForm works!
-</p>
+<div class="col-sm">
+  <div class="card">
+    <div class="card-body">      
+      <div class="row">
+        <div class="col-lg">          
+          <form [formGroup]="projetoForm" role="form">
+            <div class="row">
+              <div class=" col-md-6">
+                <label>Descrição</label>
+                <input type="text" class="form-control" placeholder="Digite a Descrição do Projeto"
+                  formControlName="Descricao" [(ngModel)]="projetoForm.Descricao" required />
+              </div>
+              <div class=" col-md-3">
+                <label>Prazo Previsto Mínimo</label>
+                <input type="text" class="form-control" placeholder="Digite o Prazo Mínimo"
+                  formControlName="PrazoPrevistoMinimo" [(ngModel)]="projetoForm.PrazoPrevistoMinimo" />
+              </div>
+              <div class=" col-md-3">
+                <label>Prazo Previsto Máximo</label>
+                <input type="text" class="form-control" placeholder="Digite o Prazo Máximo"
+                  formControlName="PrazoPrevistoMaximo" [(ngModel)]="projetoForm.PrazoPrevistoMaximo" />
+              </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class=" col-md-6">
+                  <label>Valor Previsto</label>
+                  <input type="text" class="form-control" placeholder="Informe o Valor Previsto"
+                    formControlName="ValorPrevisto" [(ngModel)]="projetoForm.ValorPrevisto" required />
+                </div>
+                <div class=" col-md-3">
+                  <label>UnidadeTempo</label>
+                  <ng-select [items]="resLegislacoes" bindLabel="fullDescription" bindValue="idLegislacao"
+                    formControlName="idLegislacao" placeholder="Selecione a Legislação"
+                    [ngClass]="{ 'is-invalid': resourceForm.errors }"></ng-select>
+                  <app-form-field-error [form-control]="resourceForm.get('idLegislacao')"></app-form-field-error>
+                  
+                </div>
+                <div class=" col-md-3">
+                  <label>Categoria</label>
+                  
+                </div>
+              </div>
+            <button type="button" class="btn btn-success" [disabled]="!formValido()" (click)="salvar()"
+              style="margin-top: 2%">
+              Salvar
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

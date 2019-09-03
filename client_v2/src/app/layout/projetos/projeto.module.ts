@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,8 +12,11 @@ import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
-    imports: [CommonModule, HttpModule , ProjetoRoutingModule,PageHeaderModule, NgbModule, DataTablesModule],
-    declarations: [ProjetoComponent,ProjetoFormComponent]
+    imports: [CommonModule, HttpModule , ProjetoRoutingModule,PageHeaderModule, NgbModule, DataTablesModule, 
+        FormsModule, ReactiveFormsModule],
+    declarations: [
+        ProjetoComponent,
+        ProjetoFormComponent]
 })
 
 export class ProjetoModule {}
